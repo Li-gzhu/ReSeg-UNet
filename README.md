@@ -64,3 +64,14 @@ loss = 0.5 * loss_ce + 0.5 * loss_dice + a * loss_opt
 
 🧠 Intuition
 By aligning internal representations between segmentation and reconstruction branches, the model learns more robust and generalizable features, leading to improved segmentation performance — especially in data-scarce or noisy scenarios.
+
+📚 References
+This work is inspired by the following classic and state-of-the-art medical image segmentation models:
+
+UNet(http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net)
+
+TransUNet(https://github.com/Beckschen/TransUNet)
+
+Swin-UNet(https://github.com/HuCaoFighting/Swin-Unet)
+
+VM-UNet(https://github.com/JCruan519/VM-UNet)
