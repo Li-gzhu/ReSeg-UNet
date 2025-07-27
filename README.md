@@ -1,5 +1,6 @@
 # ReSeg-UNet  
 We will continue to update.
+
 🔧 Core Logic: Reconstruction-Guided Feature Consistency Loss
 This code implements a reconstruction-guided feature consistency loss to enhance the segmentation performance of medical image models. The idea is to enforce consistency between the encoder and decoder features of the segmentation branch and the reconstruction branch.
 
@@ -25,6 +26,7 @@ se_decoder_feature3 = outputs[3][2]
 re_decoder_feature1 = outputs2[3][0]
 re_decoder_feature2 = outputs2[3][1]
 re_decoder_feature3 = outputs2[3][2]
+
 📉 Feature Consistency Loss
 To enforce consistency, we compute the mean squared error (MSE) between corresponding encoder and decoder features from the two branches:
 
@@ -40,6 +42,7 @@ loss_decoder3_1 = F.mse_loss(se_decoder_feature3, re_encoder_feature3)
 
 # Mid-level feature consistency
 loss_midfeature = F.mse_loss(outputs[1], outputs2[1])
+
 🎯 Total Optimization Loss
 The final optimization loss combines cross-entropy, Dice loss, and reconstruction-guided feature consistency:
 
@@ -58,5 +61,6 @@ loss_opt = (
 # Total loss
 a = 0.035  # weighting factor for consistency loss
 loss = 0.5 * loss_ce + 0.5 * loss_dice + a * loss_opt
+
 🧠 Intuition
 By aligning internal representations between segmentation and reconstruction branches, the model learns more robust and generalizable features, leading to improved segmentation performance — especially in data-scarce or noisy scenarios.
